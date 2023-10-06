@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
+import Client from './client'
+
 import './globals.css'
 
 const poppins = Poppins({
@@ -22,7 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body
+        className={`${poppins.className} w-[90vw] h-screen max-w-screen-xl max-h-screen mx-auto overflow-hidden`}
+      >
+        <Client>{children}</Client>
+      </body>
     </html>
   )
 }
