@@ -2,65 +2,119 @@
 
 import { cloneElement, useState } from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { MdMenu } from 'react-icons/md'
 
-import { socialMedias, getSocialMedia } from '@/shared/constants'
+import { useColor } from '@/hooks/useColor'
 
-import { Button, Logo, Menu } from '@/components'
+import { socialMedias, getSocialMedia } from '@/utils/socialMedias'
+import { colors } from '@/utils/colors'
+import { modes } from '@/utils/modes'
+
+import { Button, Dropdown, Logo, Menu, Portal } from '@/components'
 
 export default function Client({ children }: { children: React.ReactNode }) {
+  const { color, setColor } = useColor()
+
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [selectedMode, setSelectedMode] = useState(modes[0])
 
   const linkedIn = getSocialMedia('linkedin')
 
+  const handleChangeColor = (id: number) => setColor(colors[id])
+
+  const handleChangeMode = (id: number) => setSelectedMode(modes[id])
+
   return (
     <>
-      <nav className="flex justify-between items-center h-1/6">
+      <motion.nav
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="flex justify-between items-center pt-12 lg:pt-0 lg:h-1/6"
+      >
         <Link href="/">
           <Logo />
         </Link>
 
-        <div className="flex justify-between items-center gap-x-4">
+        <div className="flex justify-end items-center gap-x-7 xsm:gap-x-8">
+          <Dropdown
+            label={
+              <div
+                className={`flex items-center justify-center relative w-7 aspect-square rounded-[50%] bg-${color}-600 before:content-[''] before:absolute before:w-6 before:aspect-square before:rounded-[50%] before:border-4 before:border-background_color_lightTheme dark:before:border-background_color_darkTheme`}
+              />
+            }
+            options={colors.map((item, index) => ({
+              id: index,
+              item: (
+                <div
+                  key={color}
+                  className={`flex items-center justify-center relative w-7 aspect-square rounded-[50%] bg-${item}-600 ${
+                    color === item
+                      ? "before:content-[''] before:absolute before:w-6 before:aspect-square before:rounded-[50%] before:border-4 before:border-background_color_lightTheme dark:before:border-background_color_darkTheme"
+                      : ''
+                  }`}
+                />
+              )
+            }))}
+            onClickOption={handleChangeColor}
+          />
+
+          <Dropdown
+            label={selectedMode.icon}
+            options={modes.map((mode, index) => ({
+              id: index,
+              item: mode.icon
+            }))}
+            onClickOption={handleChangeMode}
+          />
+
           <Button variant="ghost" onClick={() => setMenuIsOpen(true)}>
-            <MdMenu size={30} />
+            <MdMenu size={28} />
           </Button>
         </div>
-      </nav>
+      </motion.nav>
 
-      <main className="w-full h-4/6">
-        <div className="grid grid-cols-[calc(40%_-_25px)_calc(60%_-_25px)] h-full gap-12">
-          {children}
-        </div>
+      <main className="flex flex-wrap lg:grid lg:grid-cols-[calc(40%_-_25px)_calc(60%_-_25px)] gap-12 w-full lg:h-4/6">
+        {children}
       </main>
 
-      <footer className="flex flex-row justify-between items-center h-1/6 text-neutral-800">
-        <span className="text-base">
+      <footer className="flex flex-wrap justify-center md:justify-between items-center gap-6 lg:h-1/6 pb-12 lg:pb-0 text-contrast_color_lightTheme dark:text-contrast_color_darkTheme">
+        <motion.span
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="text-base text-center md:text-left"
+        >
           Developed by{' '}
           <a
             href={linkedIn?.url}
             target="_blank"
-            className="text-pink-600 font-bold hover:text-pink-900 transition-colors"
+            className={`text-${color}-600 font-bold hover:text-${color}-900 transition-colors`}
           >
             Luís Grizzo
           </a>
           . All rights reserved.
-        </span>
+        </motion.span>
 
-        <div className="flex flex-row justify-between items-center gap-x-4">
-          {socialMedias.map((socialMedia) => (
-            <a
+        <div className="flex flex-wrap  justify-center items-center gap-4">
+          {socialMedias.map((socialMedia, index) => (
+            <motion.a
               key={socialMedia.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1 }}
               href={socialMedia.url}
               target="_blank"
-              className="hover:text-pink-600 transition-colors"
+              className={`hover:text-${color}-600 transition-colors`}
             >
               {cloneElement(socialMedia.icon, { size: 25 })}
-            </a>
+            </motion.a>
           ))}
         </div>
       </footer>
 
-      <Menu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)} />
+      <Portal>
+        <Menu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)} />
+      </Portal>
     </>
   )
 }
