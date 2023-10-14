@@ -4,7 +4,8 @@ import {
   FaGithub,
   FaInstagram,
   FaLinkedinIn,
-  FaXTwitter
+  FaXTwitter,
+  FaThreads
 } from 'react-icons/fa6'
 import { MdAlternateEmail } from 'react-icons/md'
 
@@ -28,6 +29,11 @@ export const socialMedias = [
     name: 'Instagram',
     url: 'https://www.instagram.com/luis_ozzirg/',
     icon: <FaInstagram />
+  },
+  {
+    name: 'Threads',
+    url: 'https://google.com',
+    icon: <FaThreads />
   },
   {
     name: 'Behance',
