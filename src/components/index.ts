@@ -1,5 +1,5 @@
 export * from './Button'
-export * from './Carousel'
-export * from './Frame'
+export * from './Dropdown'
 export * from './Logo'
 export * from './Menu'
+export * from './Portal'
