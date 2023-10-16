@@ -3,15 +3,15 @@ import { VscColorMode } from 'react-icons/vsc'
 
 export const modes = [
   {
-    description: 'light',
+    value: 'light',
     icon: <MdLightMode size={28} />
   },
   {
-    description: 'dark',
+    value: 'dark',
     icon: <MdDarkMode size={28} />
   },
   {
-    description: 'System theme',
+    value: 'System theme',
     icon: <VscColorMode size={28} />
   }
 ]
