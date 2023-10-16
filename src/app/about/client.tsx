@@ -118,7 +118,7 @@ export default function Client() {
 
         <TextRender texts={texts} />
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <MotionLink
             initial={verticalHidden}
             animate={verticalVisible}
