@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { MdMenu } from 'react-icons/md'
 
 import { useColor } from '@/hooks/useColor'
+import { ResizeProvider } from '@/hooks/useResize'
 
 import { socialMedias, getSocialMedia } from '@/utils/socialMedias'
 import { colors } from '@/utils/colors'
@@ -17,20 +18,20 @@ export default function Client({ children }: { children: React.ReactNode }) {
   const { color, setColor } = useColor()
 
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [selectedMode, setSelectedMode] = useState(modes[0])
+  const [selectedMode, setSelectedMode] = useState(modes[0].value)
 
   const linkedIn = getSocialMedia('linkedin')
 
-  const handleChangeColor = (id: number) => setColor(colors[id])
+  const handleChangeColor = (value: string) => setColor(value)
 
-  const handleChangeMode = (id: number) => setSelectedMode(modes[id])
+  const handleChangeMode = (value: string) => setSelectedMode(value)
 
   return (
-    <>
+    <ResizeProvider>
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex justify-between items-center pt-12 lg:pt-0 lg:h-1/6"
+        className="flex justify-between items-center pt-12 min-h-[8rem] lg:pt-0 lg:h-1/6"
       >
         <Link href="/">
           <Logo />
@@ -45,7 +46,7 @@ export default function Client({ children }: { children: React.ReactNode }) {
             }
             options={colors.map((item, index) => ({
               id: index,
-              item: (
+              label: (
                 <div
                   key={color}
                   className={`flex items-center justify-center relative w-7 aspect-square rounded-[50%] bg-${item}-600 ${
@@ -54,16 +55,21 @@ export default function Client({ children }: { children: React.ReactNode }) {
                       : ''
                   }`}
                 />
-              )
+              ),
+              value: item
             }))}
             onClickOption={handleChangeColor}
           />
 
           <Dropdown
-            label={selectedMode.icon}
+            label={
+              modes.find((mode) => mode.value === selectedMode)?.icon ??
+              modes[0].icon
+            }
             options={modes.map((mode, index) => ({
               id: index,
-              item: mode.icon
+              label: mode.icon,
+              value: mode.value
             }))}
             onClickOption={handleChangeMode}
           />
@@ -74,11 +80,11 @@ export default function Client({ children }: { children: React.ReactNode }) {
         </div>
       </motion.nav>
 
-      <main className="flex flex-wrap lg:grid lg:grid-cols-[calc(40%_-_25px)_calc(60%_-_25px)] gap-12 w-full lg:h-4/6">
+      <main className="flex flex-col lg:grid lg:grid-cols-[calc(40%_-_25px)_calc(60%_-_25px)] items-center gap-12 w-full min-h-[calc(100vh_-_((8rem_*_2)_+_(3rem_*_2)))] lg:h-4/6">
         {children}
       </main>
 
-      <footer className="flex flex-wrap justify-center md:justify-between items-center gap-6 lg:h-1/6 pb-12 lg:pb-0 text-contrast_color_lightTheme dark:text-contrast_color_darkTheme">
+      <footer className="flex flex-wrap justify-center md:justify-between items-center gap-6 min-h-[8rem] lg:h-1/6 pb-12 lg:pb-0 text-contrast_color_lightTheme dark:text-contrast_color_darkTheme">
         <motion.span
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -115,6 +121,6 @@ export default function Client({ children }: { children: React.ReactNode }) {
       <Portal>
         <Menu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)} />
       </Portal>
-    </>
+    </ResizeProvider>
   )
 }
