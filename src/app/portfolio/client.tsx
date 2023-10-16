@@ -33,7 +33,7 @@ export default function Client({ repos = [] }: ClientProps) {
     <>
       <Carousel items={repos} />
 
-      <div className="flex flex-col justify-center gap-12">
+      <div className="flex flex-col justify-center gap-12 w-full">
         <motion.h1
           initial={horizontalHidden}
           animate={horizontalVisible}

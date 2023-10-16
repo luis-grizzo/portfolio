@@ -9,6 +9,7 @@ import { DiJavascript1 } from 'react-icons/di'
 import { MdStar, MdCode } from 'react-icons/md'
 
 import { useColor } from '@/hooks/useColor'
+import { useResize } from '@/hooks/useResize'
 
 import { verticalHidden, verticalVisible } from '@/utils/animations'
 
@@ -20,6 +21,7 @@ interface CarouselProps {
 
 export const Carousel = ({ items }: CarouselProps) => {
   const { color } = useColor()
+  const { isDesktop } = useResize()
 
   const [activeItem, setActiveItem] = useState(0)
 
@@ -48,8 +50,25 @@ export const Carousel = ({ items }: CarouselProps) => {
   }, [activeItem])
 
   return (
-    <div className="flex flex-row-reverse gap-6 relative h-full overflow-hidden pb-5 before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-5 before:z-10 before:bg-gradient-to-t from-background_color_lightTheme to-transparent dark:from-background_color_darkTheme">
-      <div className="flex items-center justify-center relative h-full w-full">
+    <div className="grid grid-cols-[auto,_1fr] gap-6 relative h-full w-full overflow-hidden pb-5 before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-5 before:z-10 before:bg-gradient-to-t from-background_color_lightTheme to-transparent dark:from-background_color_darkTheme">
+      <div className="flex flex-col justify-center gap-6 z-10">
+        {items.map((item, index) => (
+          <motion.button
+            key={item.id}
+            initial={verticalHidden}
+            animate={verticalVisible}
+            transition={{ delay: index * 0.1 }}
+            className={`w-5 h-5 rounded-[50%] transition-colors ${
+              index === activeItem
+                ? `bg-${color}-600 pointer-events-none`
+                : `bg-contrast_color_lightTheme dark:bg-contrast_color_darkTheme hover:bg-${color}-600`
+            }`}
+            onClick={() => setActiveItem(index)}
+          />
+        ))}
+      </div>
+
+      <div className="flex items-center justify-center relative h-96 lg:h-full w-full">
         <AnimatePresence mode="wait">
           {items.map(
             (item, index) =>
@@ -139,23 +158,6 @@ export const Carousel = ({ items }: CarouselProps) => {
               )
           )}
         </AnimatePresence>
-      </div>
-
-      <div className="flex flex-col justify-center gap-6 z-10">
-        {items.map((item, index) => (
-          <motion.button
-            key={item.id}
-            initial={verticalHidden}
-            animate={verticalVisible}
-            transition={{ delay: index * 0.1 }}
-            className={`w-5 h-5 rounded-[50%] transition-colors ${
-              index === activeItem
-                ? `bg-${color}-600 pointer-events-none`
-                : `bg-contrast_color_lightTheme dark:bg-contrast_color_darkTheme hover:bg-${color}-600`
-            }`}
-            onClick={() => setActiveItem(index)}
-          />
-        ))}
       </div>
     </div>
   )
