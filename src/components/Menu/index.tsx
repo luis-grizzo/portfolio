@@ -43,7 +43,7 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
             animate={{ x: '0%' }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', bounce: 0.1 }}
-            className="z-20 flex flex-col items-end gap-12 w-fit max-w-screen h-full bg-shape_color_lightTheme dark:bg-shape_color_darkTheme p-12 overflow-auto"
+            className="z-20 flex flex-col items-end text-right gap-12 w-fit max-w-screen h-full bg-shape_color_lightTheme dark:bg-shape_color_darkTheme p-12 overflow-auto"
           >
             <Button variant="ghost" onClick={() => onClose()}>
               <MdClose size={30} />
