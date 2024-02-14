@@ -10,12 +10,9 @@
   },
   "extends": [
     "next/core-web-vitals",
-    "eslint:recommended",
+    "prettier",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "next",
-    "prettier"
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -25,13 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "prettier",
-    "@typescript-eslint",
-    "@next/eslint-plugin-next"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/no-empty-interface": "off",
