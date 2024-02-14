@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MdClose } from 'react-icons/md'
 
-import { useColor } from '@/hooks/useColor'
-
 import { Button } from '@/components'
 
 interface MenuProps {
@@ -15,8 +13,6 @@ interface MenuProps {
 }
 
 export const Menu = ({ isOpen, onClose }: MenuProps) => {
-  const { color } = useColor()
-
   const pathname = usePathname()
 
   const menuItems = [
@@ -43,7 +39,7 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
             animate={{ x: '0%' }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', bounce: 0.1 }}
-            className="z-20 flex flex-col items-end text-right gap-12 w-fit max-w-screen h-full bg-shape_color_lightTheme dark:bg-shape_color_darkTheme p-12 overflow-auto"
+            className="z-20 flex flex-col items-end text-right gap-12 w-fit max-w-[100vw] h-full bg-background_color_lightTheme dark:bg-background_color_darkTheme p-12 xsm:rounded-tl-3xl xsm:rounded-bl-3xl overflow-auto"
           >
             <Button variant="ghost" onClick={() => onClose()}>
               <MdClose size={30} />
@@ -56,8 +52,8 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
                 onClick={() => onClose()}
                 className={`text-4xl sm:text-5xl uppercase ${
                   pathname === item.path
-                    ? `text-${color}-600 font-bold pointer-events-none`
-                    : `font-light text-contrast_color_lightTheme dark:text-contrast_color_darkTheme hover:text-${color}-600 transition-colors`
+                    ? 'text-pink-600 font-bold pointer-events-none'
+                    : 'font-light text-contrast_color_lightTheme dark:text-contrast_color_darkTheme hover:text-pink-600 transition-colors'
                 }`}
               >
                 {item.description}
@@ -70,7 +66,7 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => onClose()}
-            className="fixed top-0 left-0 z-10 w-screen h-screen backdrop-blur-sm"
+            className="fixed top-0 left-0 z-10 w-screen h-screen backdrop-blur-sm bg-contrast_color_lightTheme/20 dark:bg-contrast_color_darkTheme/20"
           />
         </div>
       )}

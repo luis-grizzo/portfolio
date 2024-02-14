@@ -1,7 +1,10 @@
+'use client'
+
 import { createContext, useContext } from 'react'
 
 type UseResizeData = {
-  isDesktop: boolean
+  view: 'desktop' | 'mobile'
+  viewSize: number
 }
 
 export const ResizeContext = createContext<UseResizeData | undefined>(undefined)

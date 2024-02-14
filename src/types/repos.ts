@@ -6,6 +6,7 @@ export interface FetchReposProps {
   html_url: string
   homepage: string
   stargazers_count: number
+  watchers_count: number
   owner: {
     login: string
     avatar_url: string

@@ -1,49 +1,21 @@
-import {
-  FaBehance,
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-  FaThreads
-} from 'react-icons/fa6'
+import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import { MdAlternateEmail } from 'react-icons/md'
 
 export const socialMedias = [
-  {
-    name: 'Github',
-    url: 'https://github.com/luis-grizzo',
-    icon: <FaGithub />
-  },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/lu%C3%ADs-ot%C3%A1vio-gaido-grizzo-2a957a1b2/',
     icon: <FaLinkedinIn />
   },
   {
-    name: 'X',
-    url: 'https://google.com',
-    icon: <FaXTwitter />
+    name: 'Github',
+    url: 'https://github.com/luis-grizzo',
+    icon: <FaGithub />
   },
   {
     name: 'Instagram',
     url: 'https://www.instagram.com/luis_ozzirg/',
     icon: <FaInstagram />
-  },
-  {
-    name: 'Threads',
-    url: 'https://google.com',
-    icon: <FaThreads />
-  },
-  {
-    name: 'Behance',
-    url: 'https://www.behance.net/luisgrizzo',
-    icon: <FaBehance />
-  },
-  {
-    name: 'Facebook',
-    url: 'https://www.facebook.com/ozzirg.odiag/',
-    icon: <FaFacebook />
   },
   {
     name: 'Email',
