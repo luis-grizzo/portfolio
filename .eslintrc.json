@@ -26,6 +26,7 @@
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/no-empty-interface": "off",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
