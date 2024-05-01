@@ -1,11 +1,8 @@
-export const horizontalHidden = {
-  x: 50,
-  opacity: 0
-}
+import { Transition } from 'framer-motion'
 
-export const horizontalVisible = {
-  x: 0,
-  opacity: 1
+export const defaultTransition: Transition = {
+  ease: [0.77, 0, 0.18, 1],
+  duration: 0.4
 }
 
 export const verticalHidden = {
