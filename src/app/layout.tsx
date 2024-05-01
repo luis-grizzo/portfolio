@@ -1,45 +1,42 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
 
-import Client from './client'
+import { getImage } from '@/services/unsplash'
+
+import { Navbar, Hero, Footer } from '@/components/layout'
+
 import Loading from './loading'
+import { poppins } from './fonts'
 
-import { ColorProvider } from '@/hooks/useColor'
+import { dayInSeconds } from '@/constants/time'
 
 import './globals.css'
 
-const poppins = Poppins({
-  weight: ['300', '400', '500', '700', '800'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap'
-})
+export const revalidate = dayInSeconds
 
 export const metadata: Metadata = {
-  title: 'Luís Grizzo - Frontend developer',
+  title: 'Luís Grizzo - Desenvolvedor front-end',
   description:
-    "Luís Grizzo is an experienced frontend developer with a solid track record since 2019. Specialized in leading-edge technologies, he is dedicated to creating high-quality products in every front-end development project. If you are looking for a professional committed to quality, don't hesitate to contact Luís Grizzo, the front-end engineering expert who can turn your digital ideas into reality"
+    'Olá, meu nome é Luís Grizzo, conheça meu site, meus trabalhos e se conecte comigo em minhas redes sociais!'
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const image = await getImage()
+
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
-      <body
-        className={`${poppins.className} flex flex-col gap-12 lg:gap-0 w-[90vw] lg:h-screen max-w-screen-xl lg:max-h-screen mx-auto lg:overflow-hidden bg-background_color_lightTheme dark:bg-background_color_darkTheme`}
-      >
-        <ColorProvider>
-          <Suspense fallback={<Loading />}>
-            <Client>{children}</Client>
-          </Suspense>
-        </ColorProvider>
+    <html lang="pt-br" className={`${poppins.className}`}>
+      <body className="relative flex flex-col w-full min-h-dvh bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50 overflow-x-hidden">
+        <Navbar />
+
+        <Hero image={image} />
+
+        <Suspense fallback={<Loading />}>{children}</Suspense>
+
+        <Footer />
       </body>
     </html>
   )

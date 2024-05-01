@@ -2,21 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.custom-scroll::-webkit-scrollbar {
-  width: 0.5rem;
+@layer base {
+  input,
+  textarea,
+  button,
+  select,
+  a,
+  .remove-highlight-color {
+    -webkit-tap-highlight-color: transparent;
+    @apply outline-none;
+  }
 }
 
-.custom-scroll::-webkit-scrollbar-track {
-  opacity: 0;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background-color: #212121;
-  border-radius: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .custom-scroll::-webkit-scrollbar-thumb {
-    background-color: #DEDEDE;
+@layer components {
+  .card-top-border:nth-child(-n+2) {
+    @apply border-t-1;
   }
 }
