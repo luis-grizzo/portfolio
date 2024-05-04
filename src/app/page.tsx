@@ -1,14 +1,15 @@
 import Image from 'next/image'
-import { FaGithub, FaInstagram } from 'react-icons/fa6'
 
 import { getProjects } from '@/services/github'
 
-import { LinkButton, Card } from '@/components/base'
+import { Card, LinkButton } from '@/components/base'
+import { Footnote } from '@/components/page'
 
 import { socialMedias } from '@/constants/social-medias'
 import { dayInSeconds } from '@/constants/time'
 
 import portrait from '@public/portrait.jpg'
+import { FaGithub, FaInstagram } from 'react-icons/fa6'
 
 export const revalidate = dayInSeconds
 
@@ -25,7 +26,7 @@ export default async function Page() {
 
   return (
     <main className="flex flex-col gap-8 md:gap-16 lg:gap-32 h-full container mx-auto my-8 md:my-16 lg:my-32 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-x-8 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-auto gap-x-8 py-8">
         {projects.map((project) => (
           <Card key={project.id} project={project} />
         ))}
@@ -40,8 +41,8 @@ export default async function Page() {
           />
         </figure>
 
-        <div className="lg:order-1 flex flex-col gap-4 lg:max-w-3xl">
-          <h2 className="text-3xl lg:text-6xl font-light">
+        <div className="lg:order-1 flex flex-col gap-4 md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light">
             About <strong className="font-medium italic">Me.</strong>
           </h2>
 
@@ -63,12 +64,14 @@ export default async function Page() {
 
             {github && (
               <LinkButton href={github.url} icon={<FaGithub />}>
-                See more
+                See my profile
               </LinkButton>
             )}
           </div>
         </div>
       </div>
+
+      <Footnote />
     </main>
   )
 }

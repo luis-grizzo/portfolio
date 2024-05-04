@@ -1,6 +1,7 @@
 import { cache } from 'react'
 import { createApi } from 'unsplash-js'
-import { Random } from 'unsplash-js/dist/methods/photos/types'
+
+import type { Random } from 'unsplash-js/dist/methods/photos/types'
 
 const unsplashApi = createApi({
   accessKey: `${process.env.UNSPLASH_KEY}`

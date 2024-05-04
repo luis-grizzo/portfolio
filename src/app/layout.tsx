@@ -1,11 +1,11 @@
-import { Suspense } from 'react'
 import type { Metadata } from 'next'
 
 import { getImage } from '@/services/unsplash'
 
-import { Navbar, Hero, Footer } from '@/components/layout'
+import { TriggerProvider } from '@/hooks/useTrigger'
 
-import Loading from './loading'
+import { Navbar, Hero, Footer, LittleSunshine } from '@/components/layout'
+
 import { poppins } from './fonts'
 
 import { dayInSeconds } from '@/constants/time'
@@ -15,9 +15,9 @@ import './globals.css'
 export const revalidate = dayInSeconds
 
 export const metadata: Metadata = {
-  title: 'Luís Grizzo - Desenvolvedor front-end',
+  title: 'Luís Grizzo - Front-end engineer',
   description:
-    'Olá, meu nome é Luís Grizzo, conheça meu site, meus trabalhos e se conecte comigo em minhas redes sociais!'
+    "Hi, I'm a front-end engineer and UI designer. Discover my developed projects and get in touch through my social networks."
 }
 
 export default async function RootLayout({
@@ -29,14 +29,18 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-br" className={`${poppins.className}`}>
-      <body className="relative flex flex-col w-full min-h-dvh bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50 overflow-x-hidden">
-        <Navbar />
+      <body className="relative flex flex-col w-full min-h-dvh bg-neutral-950 text-neutral-50">
+        <TriggerProvider>
+          <Navbar />
 
-        <Hero image={image} />
+          <Hero image={image} />
 
-        <Suspense fallback={<Loading />}>{children}</Suspense>
+          {children}
 
-        <Footer />
+          <Footer />
+
+          <LittleSunshine />
+        </TriggerProvider>
       </body>
     </html>
   )
