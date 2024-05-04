@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { FaLinkedinIn } from 'react-icons/fa6'
 
+import { useTrigger } from '@/hooks/useTrigger'
+
 import { LinkButton, Logo } from '@/components/base'
 
 import { socialMedias } from '@/constants/social-medias'
@@ -10,12 +12,16 @@ import { socialMedias } from '@/constants/social-medias'
 import { defaultTransition } from '@/utils/animations'
 
 export function Navbar() {
+  const { setIsTemporaryOpen } = useTrigger()
+
   const linkedin = socialMedias.find(
     (socialMedia) => socialMedia.name.toLowerCase() === 'linkedin'
   )
 
   function handleGoToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    setIsTemporaryOpen(true)
   }
 
   return (
