@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       borderWidth: {
-        '1': '1px'
+        '1': '1px',
+        '16': '16px'
       }
     }
   },
