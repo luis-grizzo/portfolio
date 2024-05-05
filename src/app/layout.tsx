@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Luís Grizzo - Front-End Developer & UI-Designer',
     description:
       "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
-    url: 'luisgrizzo.dev'
+    url: 'https://www.luisgrizzo.dev'
   },
   twitter: {
     title: 'Luís Grizzo - Front-End Developer & UI-Designer',
