@@ -15,9 +15,20 @@ import './globals.css'
 export const revalidate = dayInSeconds
 
 export const metadata: Metadata = {
-  title: 'Luís Grizzo - Front-end engineer',
+  title: 'Luís Grizzo - Front-End Developer & UI-Designer',
   description:
-    "Hi, I'm a front-end engineer and UI designer. Discover my developed projects and get in touch through my social networks."
+    "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
+  openGraph: {
+    title: 'Luís Grizzo - Front-End Developer & UI-Designer',
+    description:
+      "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
+    url: 'https://www.luisgrizzo.dev'
+  },
+  twitter: {
+    title: 'Luís Grizzo - Front-End Developer & UI-Designer',
+    description:
+      "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias."
+  }
 }
 
 export default async function RootLayout({
