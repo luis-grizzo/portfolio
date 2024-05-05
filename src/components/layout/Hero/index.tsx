@@ -47,8 +47,8 @@ export function Hero({ image }: HeroProps) {
             transition={defaultTransition}
           >
             Hi, i&apos;m a{' '}
-            <strong className="font-medium italic">Front-end Engineer</strong> &{' '}
-            <strong className="font-medium italic">UI-Designer.</strong>
+            <strong className="font-medium italic">Front-End Developer</strong>{' '}
+            & <strong className="font-medium italic">UI-Designer.</strong>
           </motion.h1>
 
           <motion.p
