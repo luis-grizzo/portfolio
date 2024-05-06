@@ -15,6 +15,7 @@ import './globals.css'
 export const revalidate = hourInSeconds
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://luisgrizzo.dev'),
   title: 'Luís Grizzo - Front-End Developer & UI-Designer',
   description:
     "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
