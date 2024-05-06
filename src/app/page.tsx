@@ -6,12 +6,11 @@ import { Card, LinkButton } from '@/components/base'
 import { Footnote } from '@/components/page'
 
 import { socialMedias } from '@/constants/social-medias'
-import { dayInSeconds } from '@/constants/time'
+import { hourInSeconds } from '@/constants/time'
 
 import portrait from '@public/portrait.jpg'
-import { FaGithub, FaInstagram } from 'react-icons/fa6'
 
-export const revalidate = dayInSeconds
+export const revalidate = hourInSeconds
 
 export default async function Page() {
   const projects = await getProjects()
@@ -47,23 +46,25 @@ export default async function Page() {
           </h2>
 
           <p className="text-base text-pretty text-neutral-400">
-            Lorem ipsum dolor sit amet consectetur. Enim vestibulum suspendisse
-            luctus porttitor diam. Fames pellentesque ut morbi viverra eu.
-            Malesuada pulvinar imperdiet ullamcorper et. Natoque laoreet lacus
-            quis fringilla sed consequat. Aliquam at ornare viverra nisi quis
-            sed enim ut morbi. Interdum quis amet urna ullamcorper odio amet
-            viverra mauris interdum.
+            Hi! I&apos;m Luís Grizzo, a Front-End Developer and UI-Designer!
+            I&apos;ve been working as a front-end developer since 2019,
+            specializing initially in React and later gaining experience with
+            Angular. My career has primarily revolved around projects in the
+            banking sector. My main interests lie in crafting modern projects
+            with sleek designs, focusing on smooth transitions and animations. I
+            particularly enjoy working on user interface development for my
+            projects.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
             {instagram && (
-              <LinkButton href={instagram.url} icon={<FaInstagram />}>
+              <LinkButton href={instagram.url} icon={instagram.icon}>
                 Follow me
               </LinkButton>
             )}
 
             {github && (
-              <LinkButton href={github.url} icon={<FaGithub />}>
+              <LinkButton href={github.url} icon={github.icon}>
                 See my profile
               </LinkButton>
             )}

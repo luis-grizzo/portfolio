@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaLinkedinIn } from 'react-icons/fa6'
 
 import { useTrigger } from '@/hooks/useTrigger'
 
@@ -27,19 +26,19 @@ export function Navbar() {
   return (
     <motion.nav
       className="sticky top-0 flex items-center justify-between container mx-auto -mb-[114px] px-4 py-8 z-50"
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={defaultTransition}
     >
       <button
         onClick={handleGoToTop}
-        className="flex items-center gap-3 w-fit min-h-[50px] px-4 py-3 text-base bg-neutral-900/60 backdrop-blur text-neutral-50 border-1 border-neutral-400/10 rounded-lg"
+        className="flex items-center justify-center w-[50px] aspect-square rounded-full text-base bg-neutral-900/60 backdrop-blur text-neutral-50 border-1 border-neutral-400/10 transition-colors hover:bg-neutral-900/40"
       >
         <Logo />
       </button>
 
       {linkedin && (
-        <LinkButton href={linkedin.url} icon={<FaLinkedinIn />}>
+        <LinkButton href={linkedin.url} icon={linkedin.icon}>
           Get in touch
         </LinkButton>
       )}
