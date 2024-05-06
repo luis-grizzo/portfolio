@@ -15,6 +15,7 @@ interface CardProps {
     fork: boolean
     created_at: string | null
     updated_at: string | null
+    topics?: string[]
   }
 }
 
@@ -53,7 +54,7 @@ export function Card({ project }: CardProps) {
     <Link
       href={project.html_url}
       target="_blank"
-      className="flex flex-col gap-4 py-8 px-4 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10 hover:bg-neutral-900 transition-colors"
+      className="flex flex-col gap-4 py-8 px-4 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10 transition-colors hover:bg-neutral-900/60"
     >
       {hasStatus && (
         <div className="flex flex-wrap items-center gap-4">
@@ -86,20 +87,30 @@ export function Card({ project }: CardProps) {
           )}
         </div>
       )}
-
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-xl lg:text-2xl truncate">{project.name}</h2>
+        <h2 className="w-full text-xl lg:text-2xl truncate">{project.name}</h2>
 
         {github &&
           cloneElement(github.icon, {
             className: 'h-5 w-5 lg:h-6 lg:w-6'
           })}
       </div>
-
       {project.description && (
         <p className="text-base text-pretty text-neutral-400">
           {project.description}
         </p>
+      )}
+      {project.topics && (
+        <div className="flex flex-wrap items-center gap-2">
+          {project.topics.map((topic) => (
+            <span
+              key={topic}
+              className="flex items-center px-2 py-1 text-xs bg-neutral-800/60 text-neutral-50 border-1 border-neutral-400/10 rounded-lg"
+            >
+              {topic}
+            </span>
+          ))}
+        </div>
       )}
     </Link>
   )
