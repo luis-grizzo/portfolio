@@ -8,11 +8,11 @@ import { Navbar, Hero, Footer, LittleSunshine } from '@/components/layout'
 
 import { poppins } from './fonts'
 
-import { dayInSeconds } from '@/constants/time'
+import { hourInSeconds } from '@/constants/time'
 
 import './globals.css'
 
-export const revalidate = dayInSeconds
+export const revalidate = hourInSeconds
 
 export const metadata: Metadata = {
   title: 'Luís Grizzo - Front-End Developer & UI-Designer',
