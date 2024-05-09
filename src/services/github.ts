@@ -11,7 +11,7 @@ export const getProjects = cache(async () => {
       'X-GitHub-Api-Version': '2022-11-28'
     },
     type: 'owner',
-    sort: 'updated'
+    sort: 'created'
   })
 
   if (![200, 304].includes(status)) {
