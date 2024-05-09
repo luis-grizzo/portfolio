@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 
-import { getImage } from '@/services/unsplash'
-
 import { TriggerProvider } from '@/hooks/useTrigger'
 
-import { Navbar, Hero, Footer, LittleSunshine } from '@/components/layout'
+import { Navbar, Footer, LittleSunshine } from '@/components/layout'
 
 import { poppins } from './fonts'
 
@@ -32,20 +30,16 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
-  const image = await getImage()
-
   return (
     <html lang="pt-br" className={`${poppins.className}`}>
       <body className="relative flex flex-col w-full min-h-dvh bg-neutral-950 text-neutral-50">
         <TriggerProvider>
           <Navbar />
-
-          <Hero image={image} />
 
           {children}
 
