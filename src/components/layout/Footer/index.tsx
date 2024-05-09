@@ -35,7 +35,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Logo containerClassName="!h-3" pathClassName="!fill-neutral-400" />
 
           <span className="text-xs text-neutral-400">&copy; {currentYear}</span>

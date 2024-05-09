@@ -41,7 +41,7 @@ export function Hero({ image }: HeroProps) {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col justify-center gap-8 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl text-pretty md:text-balance font-light"
+            className="text-4xl md:text-5xl lg:text-6xl text-balance font-light"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={defaultTransition}
@@ -53,6 +53,15 @@ export function Hero({ image }: HeroProps) {
               UI-Designer.
             </strong>
           </motion.h1>
+
+          <motion.p
+            className="text-base text-neutral-300"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ ...defaultTransition, delay: 0.2 }}
+          >
+            Welcome to my portfolio, explore my projects and get in touch!
+          </motion.p>
         </div>
       </div>
 

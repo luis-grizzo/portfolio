@@ -6,7 +6,7 @@ import { defaultTransition } from '@/utils/animations'
 
 export function Footnote() {
   return (
-    <div className="flex items-center justify-center h-[40dvh]">
+    <div className="flex items-center justify-center h-[40dvh] py-8">
       <motion.h3
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center"
         initial={{ y: 50, opacity: 0 }}
