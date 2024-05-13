@@ -19,8 +19,8 @@
 I developed this project with the purpose of having a central hub to present my projects developed and published on my Github, in addition to making my main social networks available for contact.
 
 ## :memo: License
-Esse projeto está sob MIT license. Veja [LICENSE](https://github.com/luis-grizzo/new-challenge-trinca/blob/main/LICENSE) para mais informações.
+This project is under the MIT license. See [LICENSE](https://github.com/luis-grizzo/new-challenge-trinca/blob/main/LICENSE) for more information.
 
 ---
 
-👨‍🦱 Desenvolvido por **Luís Grizzo** - **Contato:** <a href="https://www.linkedin.com/in/luis-grizzo/">Linkedin</a>
+👨‍🦱 Developed by **Luís Grizzo** - **Contact:** <a href="https://www.linkedin.com/in/luis-grizzo/">Linkedin</a>
