@@ -1,10 +1,9 @@
 import { cloneElement } from 'react'
 import Link from 'next/link'
-import { MdFiberNew, MdNewReleases, MdStar } from 'react-icons/md'
-import { BiGitRepoForked } from 'react-icons/bi'
+import { GoRepoForked, GoGitBranch, GoStar, GoZap } from 'react-icons/go'
 
 import { socialMedias } from '@/constants/social-medias'
-import { halfYearInMilliseconds, yearInMilliseconds } from '@/constants/time'
+import { sixMonthsInMilliseconds, monthInMilliseconds } from '@/constants/time'
 
 interface CardProps {
   project: {
@@ -14,7 +13,7 @@ interface CardProps {
     stargazers_count: number
     fork: boolean
     created_at: string | null
-    updated_at: string | null
+    pushed_at: string | null
     topics?: string[]
   }
 }
@@ -26,26 +25,26 @@ export function Card({ project }: CardProps) {
 
   const hasStatus =
     isNewProject() ||
-    isRecentlyUpdatedProject() ||
+    isRecentlyPushedProject() ||
     !!project.stargazers_count ||
     !!project.fork
 
   function isNewProject() {
     if (project.created_at) {
       const createAt = new Date(project.created_at).getTime()
-      const oneYearAgo = new Date().getTime() - yearInMilliseconds
+      const sixMonthsAgo = new Date().getTime() - sixMonthsInMilliseconds
 
-      if (createAt > oneYearAgo) return true
+      if (createAt > sixMonthsAgo) return true
     }
     return false
   }
 
-  function isRecentlyUpdatedProject() {
-    if (project.updated_at) {
-      const updatedAt = new Date(project.updated_at).getTime()
-      const sixMonthsAgo = new Date().getTime() - halfYearInMilliseconds
+  function isRecentlyPushedProject() {
+    if (project.pushed_at) {
+      const pushedAt = new Date(project.pushed_at).getTime()
+      const oneMonthAgo = new Date().getTime() - monthInMilliseconds
 
-      if (updatedAt > sixMonthsAgo) return true
+      if (pushedAt > oneMonthAgo) return true
     }
     return false
   }
@@ -60,29 +59,29 @@ export function Card({ project }: CardProps) {
         <div className="flex flex-wrap items-center gap-4">
           {!!project.stargazers_count && (
             <span className="flex items-center gap-2 text-sm italic text-amber-400">
-              <MdStar className="h-5 w-5" />
+              <GoStar className="h-3.5 w-3.5" />
               {project.stargazers_count}
             </span>
           )}
 
           {!!project.fork && (
             <span className="flex items-center gap-2 text-sm italic text-cyan-400">
-              <BiGitRepoForked className="h-5 w-5" />
-              Fork
+              <GoRepoForked className="h-3.5 w-3.5" />
+              Forked
             </span>
           )}
 
           {isNewProject() && (
             <span className="flex items-center gap-2 text-sm italic text-fuchsia-400">
-              <MdFiberNew className="h-5 w-5" />
+              <GoZap className="h-3.5 w-3.5" />
               New project
             </span>
           )}
 
-          {isRecentlyUpdatedProject() && (
+          {isRecentlyPushedProject() && (
             <span className="flex items-center gap-2 text-sm italic text-green-400">
-              <MdNewReleases className="h-5 w-5" />
-              Recently updated
+              <GoGitBranch className="h-3.5 w-3.5" />
+              Recently pushed
             </span>
           )}
         </div>

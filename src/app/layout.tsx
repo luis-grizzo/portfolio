@@ -16,17 +16,17 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://luisgrizzo.dev'),
   title: 'Luís Grizzo - Front-End Developer & UI-Designer',
   description:
-    "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
+    "Hi, I'm Luís Grizzo a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
   openGraph: {
     title: 'Luís Grizzo - Front-End Developer & UI-Designer',
     description:
-      "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
+      "Hi, I'm Luís Grizzo a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias.",
     url: 'https://www.luisgrizzo.dev'
   },
   twitter: {
     title: 'Luís Grizzo - Front-End Developer & UI-Designer',
     description:
-      "Hi, I'm a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias."
+      "Hi, I'm Luís Grizzo a Front-End Developer & UI-Designer. Discover my github projects and get in touch through my social medias."
   }
 }
 
