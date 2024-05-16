@@ -24,12 +24,14 @@ export function Hero({ image }: HeroProps) {
       <figure className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden -z-50">
         <MotionImage
           priority
-          src={image.urls.full}
+          src={image.urls.raw}
           width={image.width}
           height={image.height}
           alt={image.alt_description ?? ''}
           className="w-full h-[calc(100%_+_300px)] object-cover object-center"
           style={{ y: yAxis, scaleX: depth, scaleY: depth }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={defaultTransition}
         />
       </figure>
@@ -39,7 +41,7 @@ export function Hero({ image }: HeroProps) {
       </span>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col justify-center gap-8 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+        <div className="flex flex-col justify-center gap-4 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl text-balance font-light"
             initial={{ x: -50, opacity: 0 }}
@@ -47,15 +49,11 @@ export function Hero({ image }: HeroProps) {
             transition={defaultTransition}
           >
             Hi, i&apos;m a{' '}
-            <strong className="font-medium italic">Front-End Developer</strong>{' '}
-            &{' '}
-            <strong className="font-medium italic text-nowrap">
-              UI-Designer.
-            </strong>
+            <strong className="font-medium italic">Software Engineer.</strong>
           </motion.h1>
 
           <motion.p
-            className="text-base text-neutral-300"
+            className="text-base md:text-lg lg:text-xl text-neutral-300"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ ...defaultTransition, delay: 0.2 }}

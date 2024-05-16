@@ -34,6 +34,7 @@ export function LittleSunshine() {
             transition={defaultTransition}
           >
             <Image
+              priority
               src={littleSunshine}
               alt="Photo of my wife Verônica and my newborn son, Caetano."
               className="object-cover object-center w-48 md:w-60 lg:w-72 aspect-square"

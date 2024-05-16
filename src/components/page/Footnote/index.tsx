@@ -13,7 +13,7 @@ export function Footnote() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={defaultTransition}
       >
-        turning <strong className="font-medium line-through">ideas</strong> into{' '}
+        Turning <strong className="font-medium line-through">ideas</strong> into{' '}
         <strong className="font-medium italic">reality!</strong>
       </motion.h3>
     </div>
