@@ -40,7 +40,7 @@ export default async function Page() {
           <figure className="lg:order-2 flex items-center justify-center w-4/5 md:w-1/2 lg:w-96 aspect-square rounded-2xl overflow-hidden">
             <Image
               src={portrait}
-              alt=""
+              alt="Photo of Luís Grizzo. He is on a hill in Ilhéus with the landscape of the Jorge Amado cable-stayed bridge in the background."
               className="w-full h-full object-cover object-center pointer-events-none"
             />
           </figure>
@@ -51,13 +51,13 @@ export default async function Page() {
             </h2>
 
             <p className="text-base text-pretty text-neutral-400">
-              Hi! I&apos;m Luís Grizzo, a Front-End Developer and UI-Designer!
-              I&apos;ve been working as a front-end developer since 2019,
-              specializing initially in React and later gaining experience with
-              Angular. My career has primarily revolved around projects in the
-              banking sector. My main interests lie in crafting modern projects
-              with sleek designs, focusing on smooth transitions and animations.
-              I particularly enjoy working on user interface development for my
+              Hi! I&apos;m Luís Grizzo, a Software Engineer! I&apos;ve been
+              working as a front-end developer since 2019, specializing
+              initially in React and later gaining experience with Angular. My
+              career has primarily revolved around projects in the banking
+              sector. My main interests lie in crafting modern projects with
+              sleek designs, focusing on smooth transitions and animations. I
+              particularly enjoy working on user interface development for my
               projects.
             </p>
 
