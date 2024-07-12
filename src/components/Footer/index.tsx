@@ -1,14 +1,15 @@
 'use client'
 
 import { cloneElement } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-import { Logo } from '@/components/base/Logo'
-
-import { socialMedias } from '@/constants/social-medias'
+import { socialMediasArray } from '@/constants/social-medias'
 
 import { defaultTransition } from '@/utils/animations'
+
+import logo from '@public/logo.svg'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -22,7 +23,7 @@ export function Footer() {
     >
       <div className="flex items-center justify-between container mx-auto px-4 py-8">
         <div className="flex items-center gap-4">
-          {socialMedias.map((socialMedia) => (
+          {socialMediasArray.map((socialMedia) => (
             <Link
               key={socialMedia.name}
               href={socialMedia.url}
@@ -35,10 +36,10 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex items-center gap-1">
-          <Logo containerClassName="!h-3" pathClassName="!fill-neutral-400" />
+        <div className="flex items-center gap-2">
+          <Image src={logo} alt="" className="w-6 aspect-square" />
 
-          <span className="text-xs text-neutral-400">&copy; {currentYear}</span>
+          <span className="text-base">&copy; {currentYear}</span>
         </div>
       </div>
     </motion.footer>

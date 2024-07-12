@@ -1,11 +1,14 @@
+import Image from 'next/image'
 import { MdKeyboardReturn } from 'react-icons/md'
 
-import { LinkButton, Logo } from '@/components/base'
+import { LinkButton } from '@/components'
+
+import logo from '@public/logo.svg'
 
 export default function NotFound() {
   return (
     <main className="flex items-center justify-center gap-4 md:gap-8 lg:gap-16 h-[calc(100vh_-_114px_-_84px_-_1px)] container mx-auto mt-[114px] py-8 md:py-16 lg:py-32 px-4">
-      <Logo containerClassName="!h-16" />
+      <Image src={logo} alt="" className="w-16 aspect-square" />
 
       <span className="w-px h-32 bg-neutral-400/10" />
 

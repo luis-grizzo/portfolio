@@ -40,7 +40,7 @@ export function LittleSunshine() {
               className="object-cover object-center w-48 md:w-60 lg:w-72 aspect-square"
             />
 
-            <figcaption className="flex flex-col items-center gap-2 text-xs font-mono text-neutral-950">
+            <figcaption className="flex flex-col items-center gap-2 text-sm font-mono text-neutral-950">
               <span className="flex items-center gap-2">
                 Verônica & Caetano
                 <MdFavorite className="-rotate-12 w-3 h-3 text-red-600 animate-heart" />

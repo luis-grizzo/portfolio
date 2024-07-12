@@ -17,43 +17,23 @@ export function Hero({ image }: HeroProps) {
   const MotionImage = motion(Image)
 
   const yAxis = useTransform(scrollYProgress, [0, 1], [-300, 300])
-  const depth = useTransform(scrollYProgress, [0, 1], [1.1, 1])
+  const depth = useTransform(scrollYProgress, [0, 1], [1.2, 1])
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-[75vh] md:h-[70vh] border-b-1 border-neutral-400/10">
-      <figure className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden -z-50">
-        <MotionImage
-          priority
-          src={image.urls.raw}
-          width={image.width}
-          height={image.height}
-          alt={image.alt_description ?? ''}
-          className="w-full h-[calc(100%_+_300px)] object-cover object-center"
-          style={{ y: yAxis, scaleX: depth, scaleY: depth }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={defaultTransition}
-        />
-      </figure>
-
-      <span className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 text-base italic py-4 text-neutral-300">
-        luisgrizzo.dev
-      </span>
-
+    <header className="relative flex flex-col items-center justify-center w-full h-[75vh] md:h-[70vh] lg:h-[65vh]  border-b-1 border-neutral-400/10">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col justify-center gap-4 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl text-balance font-light"
+            className="text-4xl sm:text-5xl text-pretty"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={defaultTransition}
           >
-            Hi, i&apos;m a{' '}
-            <strong className="font-medium italic">Software Engineer.</strong>
+            Hi, i&apos;m a Front-end Developer.
           </motion.h1>
 
           <motion.p
-            className="text-base md:text-lg lg:text-xl text-neutral-300"
+            className="text-xl sm:text-2xl text-pretty text-neutral-300"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ ...defaultTransition, delay: 0.2 }}
@@ -63,13 +43,33 @@ export function Hero({ image }: HeroProps) {
         </div>
       </div>
 
-      <span className="absolute left-4 bottom-8 text-xs text-neutral-300">
-        Image by{' '}
+      <span className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 text-base py-4 text-neutral-300">
+        luisgrizzo.dev
+      </span>
+
+      <figure className="absolute top-0 left-0 w-full h-full opacity-30 overflow-hidden -z-50">
+        <MotionImage
+          priority
+          src={image.urls.raw}
+          width={image.width}
+          height={image.height}
+          alt={image.alt_description ?? ''}
+          onMouseEnter={(event) => console.log(event)}
+          className="w-full h-[calc(100%_+_300px)] object-cover object-center"
+          style={{ y: yAxis, scaleX: depth, scaleY: depth }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={defaultTransition}
+        />
+      </figure>
+
+      <span className="absolute -translate-x-1/2 left-1/2 bottom-8 w-full px-4 text-xs text-center text-pretty text-neutral-400">
+        Photo by{' '}
         <a
           href={`https://unsplash.com/@${image.user.username}?utm_source=Unconscious&utm_medium=referral`}
           target="_blank"
           rel="noreferrer"
-          className="italic text-blue-400 hover:text-blue-200 transition-colors"
+          className="text-blue-400 hover:text-blue-200 transition-colors"
         >
           {image.user.name}
         </a>{' '}
@@ -78,11 +78,11 @@ export function Hero({ image }: HeroProps) {
           href="https://unsplash.com/?utm_source=Unconscious&utm_medium=referral"
           target="_blank"
           rel="noreferrer"
-          className="italic text-blue-400 hover:text-blue-200 transition-colors"
+          className="text-blue-400 hover:text-blue-200 transition-colors"
         >
           Unsplash
         </a>
       </span>
-    </div>
+    </header>
   )
 }

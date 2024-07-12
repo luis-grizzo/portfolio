@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import Loading from './loading'
 import { poppins } from './fonts'
 
 import { TriggerProvider } from '@/hooks/useTrigger'
 
-import { Navbar, Footer, LittleSunshine } from '@/components/layout'
+import { Navbar, Footer, LittleSunshine } from '@/components'
 
 import { hourInSeconds } from '@/constants/time'
 
@@ -16,19 +16,23 @@ export const revalidate = hourInSeconds
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://luisgrizzo.dev'),
-  title: 'Luís Grizzo - Software Engineer',
+  title: 'Luís Grizzo - Front-end Developer',
   description:
-    "Hi, I'm Luís Grizzo a Software Engineer. Discover my github projects and get in touch through my social medias.",
-  themeColor: '#0a0a0a',
+    "Hi, I'm Luís Grizzo a Front-end Developer. Discover my github projects and get in touch through my social medias.",
   openGraph: {
-    title: 'Luís Grizzo - Software Engineer',
+    title: 'Luís Grizzo - Front-end Developer',
     description: 'Turning ideas into reality!',
-    url: new URL('https://luisgrizzo.dev')
+    url: new URL('https://luisgrizzo.dev'),
+    siteName: 'Luís Grizzo'
   },
   twitter: {
-    title: 'Luís Grizzo - Software Engineer',
+    title: 'Luís Grizzo - Front-end Developer',
     description: 'Turning ideas into reality!'
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a'
 }
 
 export default function RootLayout({
@@ -37,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br" className={`${poppins.className}`}>
+    <html lang="en" className={poppins.className}>
       <body className="relative flex flex-col w-full min-h-dvh bg-neutral-950 text-neutral-50">
         <TriggerProvider>
           <Navbar />
