@@ -19,9 +19,7 @@ interface CardProps {
 }
 
 export function Card({ project }: CardProps) {
-  const github = socialMedias.find(
-    (socialMedia) => socialMedia.name.toLowerCase() === 'github'
-  )
+  const { github } = socialMedias
 
   const hasStatus =
     isNewProject() ||
@@ -36,6 +34,7 @@ export function Card({ project }: CardProps) {
 
       if (createAt > sixMonthsAgo) return true
     }
+
     return false
   }
 
@@ -46,6 +45,7 @@ export function Card({ project }: CardProps) {
 
       if (pushedAt > oneMonthAgo) return true
     }
+
     return false
   }
 
@@ -86,19 +86,21 @@ export function Card({ project }: CardProps) {
           )}
         </div>
       )}
-      <div className="flex items-center justify-between gap-2">
-        <h2 className="w-full text-xl lg:text-2xl truncate">{project.name}</h2>
 
-        {github &&
-          cloneElement(github.icon, {
-            className: 'h-5 w-5 lg:h-6 lg:w-6'
-          })}
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="w-full text-2xl truncate">{project.name}</h2>
+
+        {cloneElement(github.icon, {
+          className: 'h-5 w-5 lg:h-6 lg:w-6'
+        })}
       </div>
+
       {project.description && (
         <p className="text-base text-pretty text-neutral-400">
           {project.description}
         </p>
       )}
+
       {project.topics && (
         <div className="flex flex-wrap items-center gap-2">
           {project.topics.map((topic) => (

@@ -1,21 +1,22 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 import { useTrigger } from '@/hooks/useTrigger'
 
-import { LinkButton, Logo } from '@/components/base'
+import { LinkButton } from '@/components'
 
 import { socialMedias } from '@/constants/social-medias'
 
 import { defaultTransition } from '@/utils/animations'
 
+import logo from '@public/logo.svg'
+
 export function Navbar() {
   const { setIsTemporaryOpen } = useTrigger()
 
-  const linkedin = socialMedias.find(
-    (socialMedia) => socialMedia.name.toLowerCase() === 'linkedin'
-  )
+  const { linkedin } = socialMedias
 
   function handleGoToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -34,7 +35,8 @@ export function Navbar() {
         onClick={handleGoToTop}
         className="flex items-center justify-center w-[50px] aspect-square rounded-full text-base bg-neutral-900/60 backdrop-blur text-neutral-50 border-1 border-neutral-400/10 transition-colors hover:bg-neutral-900/40"
       >
-        <Logo />
+        {/* <Logo /> */}
+        <Image src={logo} alt="" className="w-8 aspect-square" />
       </button>
 
       {linkedin && (
