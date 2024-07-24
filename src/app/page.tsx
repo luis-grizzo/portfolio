@@ -6,11 +6,11 @@ import { getProjects } from '@/services/github'
 import { Card, LinkButton, Hero, Footnote } from '@/components'
 
 import { socialMedias } from '@/constants/social-medias'
-import { hourInSeconds } from '@/constants/time'
+import { oneHourInSeconds } from '@/constants/timeMarks'
 
 import portrait from '@public/portrait.jpg'
 
-export const revalidate = hourInSeconds
+export const revalidate = oneHourInSeconds
 
 export default async function Page() {
   const image = await getImage()
@@ -23,7 +23,7 @@ export default async function Page() {
       <Hero image={image} />
 
       <main className="flex flex-col gap-8 md:gap-16 lg:gap-24 h-full container mx-auto my-8 md:my-16 lg:my-24 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-auto gap-x-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-auto gap-x-16 py-8">
           {projects.map((project) => (
             <Card key={project.id} project={project} />
           ))}

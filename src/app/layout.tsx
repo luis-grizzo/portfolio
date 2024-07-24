@@ -8,11 +8,11 @@ import { TriggerProvider } from '@/hooks/useTrigger'
 
 import { Navbar, Footer, LittleSunshine } from '@/components'
 
-import { hourInSeconds } from '@/constants/time'
+import { oneHourInSeconds } from '@/constants/timeMarks'
 
 import './globals.css'
 
-export const revalidate = hourInSeconds
+export const revalidate = oneHourInSeconds
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://luisgrizzo.dev'),
