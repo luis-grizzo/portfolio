@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { GoLinkExternal } from 'react-icons/go'
 
 import type { Random } from 'unsplash-js/dist/methods/photos/types'
 
@@ -50,11 +51,10 @@ export function Hero({ image }: HeroProps) {
       <figure className="absolute top-0 left-0 w-full h-full opacity-30 overflow-hidden -z-50">
         <MotionImage
           priority
-          src={image.urls.raw}
+          src={image.urls.full}
           width={image.width}
           height={image.height}
-          alt={image.alt_description ?? ''}
-          onMouseEnter={(event) => console.log(event)}
+          alt={image.alt_description ?? 'Generic background image'}
           className="w-full h-[calc(100%_+_300px)] object-cover object-center"
           style={{ y: yAxis, scaleX: depth, scaleY: depth }}
           initial={{ opacity: 0 }}
@@ -63,24 +63,27 @@ export function Hero({ image }: HeroProps) {
         />
       </figure>
 
-      <span className="absolute -translate-x-1/2 left-1/2 bottom-8 w-full px-4 text-xs text-center text-pretty text-neutral-400">
-        Photo by{' '}
+      <span className="absolute bottom-8 flex items-center justify-center gap-1.5 w-full px-4 text-xs text-center text-pretty text-neutral-400">
+        {'Photo by'}
         <a
           href={`https://unsplash.com/@${image.user.username}?utm_source=Unconscious&utm_medium=referral`}
           target="_blank"
           rel="noreferrer"
-          className="text-blue-400 hover:text-blue-200 transition-colors"
+          className="flex items-center gap-1 text-blue-400 hover:text-blue-200 transition-colors"
         >
           {image.user.name}
-        </a>{' '}
-        on{' '}
+
+          <GoLinkExternal className="h-3 w-3" />
+        </a>
+        {'on'}
         <a
           href="https://unsplash.com/?utm_source=Unconscious&utm_medium=referral"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-400 hover:text-blue-200 transition-colors"
+          className="flex items-center gap-1 text-blue-400 hover:text-blue-200 transition-colors"
         >
           Unsplash
+          <GoLinkExternal className="h-3 w-3" />
         </a>
       </span>
     </header>

@@ -1,11 +1,22 @@
 import { cloneElement } from 'react'
 import Link from 'next/link'
-import { GoRepoForked, GoGitBranch, GoStar, GoZap } from 'react-icons/go'
+import {
+  GoRepoForked,
+  GoGitBranch,
+  GoStar,
+  GoZap,
+  GoLinkExternal,
+  GoLaw,
+  GoCode
+} from 'react-icons/go'
 
 import { socialMedias } from '@/constants/social-medias'
-import { sixMonthsInMilliseconds, monthInMilliseconds } from '@/constants/time'
+import {
+  oneMonthInMilliseconds,
+  oneYearInMilliseconds
+} from '@/constants/timeMarks'
 
-interface CardProps {
+export interface CardProps {
   project: {
     name: string
     description: string | null
@@ -15,77 +26,84 @@ interface CardProps {
     created_at: string | null
     pushed_at: string | null
     topics?: string[]
+    homepage: string | null
+    language: string | null
+    license: {
+      name: string
+    } | null
   }
 }
 
 export function Card({ project }: CardProps) {
   const { github } = socialMedias
 
-  const hasStatus =
-    isNewProject() ||
-    isRecentlyPushedProject() ||
-    !!project.stargazers_count ||
-    !!project.fork
-
   function isNewProject() {
-    if (project.created_at) {
-      const createAt = new Date(project.created_at).getTime()
-      const sixMonthsAgo = new Date().getTime() - sixMonthsInMilliseconds
-
-      if (createAt > sixMonthsAgo) return true
+    if (!project.created_at) {
+      return false
     }
 
-    return false
+    const createdAt = new Date(project.created_at).getTime()
+    const sixMonthsAgo = new Date().getTime() - oneYearInMilliseconds
+
+    return createdAt > sixMonthsAgo
   }
 
   function isRecentlyPushedProject() {
-    if (project.pushed_at) {
-      const pushedAt = new Date(project.pushed_at).getTime()
-      const oneMonthAgo = new Date().getTime() - monthInMilliseconds
-
-      if (pushedAt > oneMonthAgo) return true
+    if (!project.pushed_at) {
+      return false
     }
 
-    return false
+    const pushedAt = new Date(project.pushed_at).getTime()
+    const oneMonthAgo = new Date().getTime() - oneMonthInMilliseconds
+
+    return pushedAt > oneMonthAgo
   }
 
   return (
-    <Link
-      href={project.html_url}
-      target="_blank"
-      className="flex flex-col gap-4 py-8 px-4 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10 transition-colors hover:bg-neutral-900/60"
-    >
-      {hasStatus && (
-        <div className="flex flex-wrap items-center gap-4">
-          {!!project.stargazers_count && (
-            <span className="flex items-center gap-2 text-sm italic text-amber-400">
-              <GoStar className="h-3.5 w-3.5" />
-              {project.stargazers_count}
-            </span>
-          )}
+    <div className="flex flex-col gap-4 py-8 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        {isNewProject() && (
+          <span className="flex items-center gap-2 text-sm italic text-purple-400">
+            <GoZap className="h-3.5 w-3.5" />
+            New project
+          </span>
+        )}
 
-          {!!project.fork && (
-            <span className="flex items-center gap-2 text-sm italic text-cyan-400">
-              <GoRepoForked className="h-3.5 w-3.5" />
-              Forked
-            </span>
-          )}
+        {isRecentlyPushedProject() && (
+          <span className="flex items-center gap-2 text-sm italic text-green-400">
+            <GoGitBranch className="h-3.5 w-3.5" />
+            Recently pushed
+          </span>
+        )}
 
-          {isNewProject() && (
-            <span className="flex items-center gap-2 text-sm italic text-fuchsia-400">
-              <GoZap className="h-3.5 w-3.5" />
-              New project
-            </span>
-          )}
+        {!!project.stargazers_count && (
+          <span className="flex items-center gap-2 text-sm italic text-yellow-400">
+            <GoStar className="h-3.5 w-3.5" />
+            {project.stargazers_count}
+          </span>
+        )}
 
-          {isRecentlyPushedProject() && (
-            <span className="flex items-center gap-2 text-sm italic text-green-400">
-              <GoGitBranch className="h-3.5 w-3.5" />
-              Recently pushed
-            </span>
-          )}
-        </div>
-      )}
+        {!!project.language && (
+          <span className="flex items-center gap-2 text-sm italic text-neutral-400">
+            <GoCode className="h-3.5 w-3.5" />
+            {project.language}
+          </span>
+        )}
+
+        {project.fork && (
+          <span className="flex items-center gap-2 text-sm italic text-neutral-400">
+            <GoRepoForked className="h-3.5 w-3.5" />
+            Forked
+          </span>
+        )}
+
+        {!!project.license && (
+          <span className="flex items-center gap-2 text-sm italic text-neutral-400">
+            <GoLaw className="h-3.5 w-3.5" />
+            {project.license.name}
+          </span>
+        )}
+      </div>
 
       <div className="flex items-center justify-between gap-2">
         <h2 className="w-full text-2xl truncate">{project.name}</h2>
@@ -93,6 +111,28 @@ export function Card({ project }: CardProps) {
         {cloneElement(github.icon, {
           className: 'h-5 w-5 lg:h-6 lg:w-6'
         })}
+      </div>
+
+      <div className="flex items-center gap-4">
+        <Link
+          href={project.html_url}
+          target="_blank"
+          className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+        >
+          Repository
+          <GoLinkExternal className="h-3.5 w-3.5" />
+        </Link>
+
+        {project.homepage && (
+          <Link
+            href={project.homepage}
+            target="_blank"
+            className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+          >
+            Homepage
+            <GoLinkExternal className="h-3.5 w-3.5" />
+          </Link>
+        )}
       </div>
 
       {project.description && (
@@ -113,6 +153,6 @@ export function Card({ project }: CardProps) {
           ))}
         </div>
       )}
-    </Link>
+    </div>
   )
 }
