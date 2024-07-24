@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error should match snapshot 1`] = `
+<div>
+  <main
+    class="flex flex-col items-center justify-center gap-4 md:gap-8 lg:gap-16 h-[calc(100vh_-_114px_-_88px_-_1px)] container mx-auto mt-[114px] py-8 md:py-16 lg:py-32 px-4"
+  >
+    <h1
+      class="text-4xl sm:text-5xl"
+    >
+      Error
+    </h1>
+    <p
+      class="text-xl sm:text-2xl text-center text-neutral-400"
+    >
+      Something went wrong!
+    </p>
+    <button
+      class="flex items-center gap-3 w-fit px-4 py-3 text-base bg-neutral-900/60 backdrop-blur text-neutral-50 border-1 border-neutral-400/10 rounded-lg transition-colors hover:bg-neutral-900/40"
+    >
+      Retry
+      <svg
+        class="h-4 aspect-square "
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"
+        />
+      </svg>
+    </button>
+  </main>
+</div>
+`;

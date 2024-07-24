@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { TriggerContext } from './use-trigger'
 
-import { fiveSecondsInMilliseconds } from '@/constants/time'
+import { fiveSecondsInMilliseconds } from '@/constants/timeMarks'
 
 type TriggerProviderProps = {
   children: React.ReactNode

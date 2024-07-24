@@ -35,7 +35,6 @@ export function Navbar() {
         onClick={handleGoToTop}
         className="flex items-center justify-center w-[50px] aspect-square rounded-full text-base bg-neutral-900/60 backdrop-blur text-neutral-50 border-1 border-neutral-400/10 transition-colors hover:bg-neutral-900/40"
       >
-        {/* <Logo /> */}
         <Image src={logo} alt="" className="w-8 aspect-square" />
       </button>
 

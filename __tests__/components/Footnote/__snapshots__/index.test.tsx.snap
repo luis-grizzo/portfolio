@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footnote should match snapshot 1`] = `
+<div>
+  <div
+    class="flex items-center justify-center h-[40dvh] py-8"
+  >
+    <h3
+      class="text-4xl sm:text-5xl text-pretty text-center"
+      style="opacity: 0; transform: translateY(50px);"
+    >
+      Turning 
+      <span
+        class="line-through"
+      >
+        ideas
+      </span>
+       into
+       
+      <span
+        class="italic"
+      >
+        reality!
+      </span>
+    </h3>
+  </div>
+</div>
+`;

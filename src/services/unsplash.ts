@@ -9,7 +9,7 @@ const unsplashApi = createApi({
 
 export const getImage = cache(async () => {
   const { errors, response } = await unsplashApi.photos.getRandom({
-    collectionIds: ['2kcXOONNrrA']
+    collectionIds: [`${process.env.UNSPLASH_COLLECTION_ID}`]
   })
 
   if (errors) {
