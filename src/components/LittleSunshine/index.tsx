@@ -2,8 +2,6 @@
 
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MdFavorite } from 'react-icons/md'
-import { FaSun } from 'react-icons/fa6'
 
 import { useTrigger } from '@/hooks/useTrigger'
 
@@ -42,13 +40,11 @@ export function LittleSunshine() {
 
             <figcaption className="flex flex-col items-center gap-2 text-sm font-mono text-neutral-950">
               <span className="flex items-center gap-2">
-                Verônica & Caetano
-                <MdFavorite className="-rotate-12 w-3 h-3 text-red-600 animate-heart" />
+                Verônica & Caetano &lt;3
               </span>
 
               <span className="flex items-center gap-2">
                 My little sunshine!
-                <FaSun className="rotate-2 w-3 h-3 text-amber-600 animate-heart" />
               </span>
             </figcaption>
           </motion.figure>
