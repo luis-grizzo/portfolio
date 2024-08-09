@@ -18,7 +18,8 @@ export function Button({
 
       {icon &&
         cloneElement(icon, {
-          className: `h-4 aspect-square ${icon.props.className ?? ''}`
+          size: 16,
+          className: icon.props.className ?? ''
         })}
     </button>
   )
