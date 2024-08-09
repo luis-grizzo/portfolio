@@ -9,16 +9,15 @@ exports[`Card should match snapshot 1`] = `
       class="flex flex-wrap items-center gap-x-4 gap-y-2"
     >
       <span
-        class="flex items-center gap-2 text-sm italic text-purple-400"
+        class="flex items-center gap-2 w-max text-sm italic text-purple-400"
       >
         <svg
-          class="h-3.5 w-3.5"
           fill="currentColor"
-          height="1em"
+          height="14"
           stroke="currentColor"
           stroke-width="0"
           viewBox="0 0 24 24"
-          width="1em"
+          width="14"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -28,41 +27,15 @@ exports[`Card should match snapshot 1`] = `
         New project
       </span>
       <span
-        class="flex items-center gap-2 text-sm italic text-green-400"
-      >
-        <svg
-          class="h-3.5 w-3.5"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15 4.75a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM2.5 19.25a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0Zm0-14.5a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM5.75 6.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 6.5Zm0 14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 21Zm12.5-14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 18.25 6.5Z"
-          />
-          <path
-            d="M5.75 16.75A.75.75 0 0 1 5 16V8a.75.75 0 0 1 1.5 0v8a.75.75 0 0 1-.75.75Z"
-          />
-          <path
-            d="M17.5 8.75v-1H19v1a3.75 3.75 0 0 1-3.75 3.75h-7a1.75 1.75 0 0 0-1.75 1.75H5A3.25 3.25 0 0 1 8.25 11h7a2.25 2.25 0 0 0 2.25-2.25Z"
-          />
-        </svg>
-        Recently pushed
-      </span>
-      <span
         class="flex items-center gap-2 text-sm italic text-neutral-400"
       >
         <svg
-          class="h-3.5 w-3.5"
           fill="currentColor"
-          height="1em"
+          height="14"
           stroke="currentColor"
           stroke-width="0"
           viewBox="0 0 24 24"
-          width="1em"
+          width="14"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -81,13 +54,12 @@ exports[`Card should match snapshot 1`] = `
         name
       </h2>
       <svg
-        class="h-5 w-5 lg:h-6 lg:w-6"
         fill="currentColor"
-        height="1em"
+        height="24"
         stroke="currentColor"
         stroke-width="0"
         viewBox="0 0 496 512"
-        width="1em"
+        width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -96,55 +68,21 @@ exports[`Card should match snapshot 1`] = `
       </svg>
     </div>
     <div
-      class="flex items-center gap-4"
+      class="flex items-center gap-2"
     >
       <a
-        class="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+        class="underline underline-offset-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
         href="html_url"
         target="_blank"
       >
         Repository
-        <svg
-          class="h-3.5 w-3.5"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"
-          />
-          <path
-            d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"
-          />
-        </svg>
       </a>
       <a
-        class="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+        class="underline underline-offset-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
         href="homepage"
         target="_blank"
       >
         Homepage
-        <svg
-          class="h-3.5 w-3.5"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"
-          />
-          <path
-            d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"
-          />
-        </svg>
       </a>
     </div>
     <p
