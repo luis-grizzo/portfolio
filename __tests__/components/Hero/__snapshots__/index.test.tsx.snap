@@ -3,7 +3,7 @@
 exports[`Hero should match snapshot 1`] = `
 <div>
   <header
-    class="relative flex flex-col items-center justify-center w-full h-[75vh] md:h-[70vh] lg:h-[65vh]  border-b-1 border-neutral-400/10"
+    class="relative flex flex-col items-center justify-center w-full h-[75vh] md:h-[70vh] lg:h-[65vh] border-b-1 border-neutral-400/10"
   >
     <div
       class="container mx-auto px-4 py-8"
@@ -47,59 +47,25 @@ exports[`Hero should match snapshot 1`] = `
       />
     </figure>
     <span
-      class="absolute bottom-8 flex items-center justify-center gap-1.5 w-full px-4 text-xs text-center text-pretty text-neutral-400"
+      class="absolute bottom-8 px-4 text-xs text-center text-pretty text-neutral-300"
     >
-      Photo by
+      Photo by 
       <a
-        class="flex items-center gap-1 text-blue-400 hover:text-blue-200 transition-colors"
+        class="underline underline-offset-2 text-blue-400 hover:text-blue-200 transition-colors"
         href="https://unsplash.com/@username?utm_source=Unconscious&utm_medium=referral"
         rel="noreferrer"
         target="_blank"
       >
         name
-        <svg
-          class="h-3 w-3"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"
-          />
-          <path
-            d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"
-          />
-        </svg>
       </a>
-      on
+       on 
       <a
-        class="flex items-center gap-1 text-blue-400 hover:text-blue-200 transition-colors"
+        class="underline underline-offset-2 text-blue-400 hover:text-blue-200 transition-colors"
         href="https://unsplash.com/?utm_source=Unconscious&utm_medium=referral"
         rel="noreferrer"
         target="_blank"
       >
         Unsplash
-        <svg
-          class="h-3 w-3"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"
-          />
-          <path
-            d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"
-          />
-        </svg>
       </a>
     </span>
   </header>
