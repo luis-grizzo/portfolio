@@ -11,10 +11,7 @@ import {
 } from 'react-icons/go'
 
 import { socialMedias } from '@/constants/social-medias'
-import {
-  oneMonthInMilliseconds,
-  oneYearInMilliseconds
-} from '@/constants/timeMarks'
+import { timeUnits } from '@/constants/timeUnits'
 
 export interface CardProps {
   project: {
@@ -39,15 +36,48 @@ export interface CardProps {
 export function Card({ project }: CardProps) {
   const { github } = socialMedias
 
+  function getRelativeTime(timestamp: string) {
+    const now = Date.now()
+    const numericTimestamp = new Date(timestamp).getTime()
+    const timeDifference = numericTimestamp - now
+    const absoluteTimeDifference = Math.abs(timeDifference)
+
+    const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', {
+      numeric: 'auto'
+    })
+
+    const units = [
+      { max: timeUnits.minute, value: timeUnits.second, name: 'second' },
+      { max: timeUnits.hour, value: timeUnits.minute, name: 'minute' },
+      { max: timeUnits.day, value: timeUnits.hour, name: 'hour' },
+      { max: timeUnits.week, value: timeUnits.day, name: 'day' },
+      { max: timeUnits.month, value: timeUnits.week, name: 'week' },
+      { max: timeUnits.year, value: timeUnits.month, name: 'month' },
+      { max: Infinity, value: timeUnits.year, name: 'year' }
+    ]
+
+    let correctTimeUnitIndex = 0
+
+    while (absoluteTimeDifference > units[correctTimeUnitIndex].max) {
+      correctTimeUnitIndex++
+    }
+
+    const value = Math.round(timeDifference / units[correctTimeUnitIndex].value)
+    return relativeTimeFormatter.format(
+      value,
+      units[correctTimeUnitIndex].name as Intl.RelativeTimeFormatUnit
+    )
+  }
+
   function isNewProject() {
     if (!project.created_at) {
       return false
     }
 
     const createdAt = new Date(project.created_at).getTime()
-    const sixMonthsAgo = new Date().getTime() - oneYearInMilliseconds
+    const twoYearsAgo = Date.now() - timeUnits.year * 1.5
 
-    return createdAt > sixMonthsAgo
+    return createdAt > twoYearsAgo
   }
 
   function isRecentlyPushedProject() {
@@ -56,7 +86,7 @@ export function Card({ project }: CardProps) {
     }
 
     const pushedAt = new Date(project.pushed_at).getTime()
-    const oneMonthAgo = new Date().getTime() - oneMonthInMilliseconds
+    const oneMonthAgo = Date.now() - timeUnits.month * 1.5
 
     return pushedAt > oneMonthAgo
   }
@@ -64,17 +94,17 @@ export function Card({ project }: CardProps) {
   return (
     <div className="flex flex-col gap-4 py-8 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        {isNewProject() && (
+        {isNewProject() && project.created_at && (
           <span className="flex items-center gap-2 w-max text-sm italic text-purple-400">
             <GoZap size={14} />
-            New project
+            Created {getRelativeTime(project.created_at)}
           </span>
         )}
 
-        {isRecentlyPushedProject() && (
+        {isRecentlyPushedProject() && project.pushed_at && (
           <span className="flex items-center gap-2 text-sm italic text-green-400">
             <GoGitBranch size={14} />
-            Recently pushed
+            Pushed {getRelativeTime(project.pushed_at)}
           </span>
         )}
 

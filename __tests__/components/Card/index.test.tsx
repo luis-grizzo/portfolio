@@ -2,8 +2,23 @@ import { render, screen } from '@testing-library/react'
 
 import { Card, CardProps } from '@/components'
 
+jest.useFakeTimers()
+
 describe('Card', () => {
+  beforeAll(() => {
+    const fakeDate = new Date('2024-07-06T18:25:47Z')
+
+    jest.setSystemTime(fakeDate)
+  })
+
+  afterAll(() => {
+    jest.clearAllTimers()
+  })
+
   const mockProject: CardProps['project'] = {
+    forks_count: 10,
+    language: 'language',
+    watchers_count: 10,
     created_at: '2024-05-21T14:42:05Z',
     description: 'description',
     fork: false,
@@ -12,7 +27,7 @@ describe('Card', () => {
     license: { name: 'license name' },
     name: 'name',
     pushed_at: '2024-07-03T18:25:47Z',
-    stargazers_count: 0,
+    stargazers_count: 10,
     topics: ['topic']
   }
 
