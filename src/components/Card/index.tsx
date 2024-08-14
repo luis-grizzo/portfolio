@@ -5,16 +5,13 @@ import {
   GoGitBranch,
   GoStar,
   GoZap,
-  GoLinkExternal,
   GoLaw,
-  GoCode
+  GoCodeSquare,
+  GoEye
 } from 'react-icons/go'
 
 import { socialMedias } from '@/constants/social-medias'
-import {
-  oneMonthInMilliseconds,
-  oneYearInMilliseconds
-} from '@/constants/timeMarks'
+import { timeUnits } from '@/constants/timeUnits'
 
 export interface CardProps {
   project: {
@@ -22,6 +19,8 @@ export interface CardProps {
     description: string | null
     html_url: string
     stargazers_count: number
+    watchers_count: number
+    forks_count: number
     fork: boolean
     created_at: string | null
     pushed_at: string | null
@@ -37,15 +36,48 @@ export interface CardProps {
 export function Card({ project }: CardProps) {
   const { github } = socialMedias
 
+  function getRelativeTime(timestamp: string) {
+    const now = Date.now()
+    const numericTimestamp = new Date(timestamp).getTime()
+    const timeDifference = numericTimestamp - now
+    const absoluteTimeDifference = Math.abs(timeDifference)
+
+    const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', {
+      numeric: 'auto'
+    })
+
+    const units = [
+      { max: timeUnits.minute, value: timeUnits.second, name: 'second' },
+      { max: timeUnits.hour, value: timeUnits.minute, name: 'minute' },
+      { max: timeUnits.day, value: timeUnits.hour, name: 'hour' },
+      { max: timeUnits.week, value: timeUnits.day, name: 'day' },
+      { max: timeUnits.month, value: timeUnits.week, name: 'week' },
+      { max: timeUnits.year, value: timeUnits.month, name: 'month' },
+      { max: Infinity, value: timeUnits.year, name: 'year' }
+    ]
+
+    let correctTimeUnitIndex = 0
+
+    while (absoluteTimeDifference > units[correctTimeUnitIndex].max) {
+      correctTimeUnitIndex++
+    }
+
+    const value = Math.round(timeDifference / units[correctTimeUnitIndex].value)
+    return relativeTimeFormatter.format(
+      value,
+      units[correctTimeUnitIndex].name as Intl.RelativeTimeFormatUnit
+    )
+  }
+
   function isNewProject() {
     if (!project.created_at) {
       return false
     }
 
     const createdAt = new Date(project.created_at).getTime()
-    const sixMonthsAgo = new Date().getTime() - oneYearInMilliseconds
+    const twoYearsAgo = Date.now() - timeUnits.year * 1.5
 
-    return createdAt > sixMonthsAgo
+    return createdAt > twoYearsAgo
   }
 
   function isRecentlyPushedProject() {
@@ -54,7 +86,7 @@ export function Card({ project }: CardProps) {
     }
 
     const pushedAt = new Date(project.pushed_at).getTime()
-    const oneMonthAgo = new Date().getTime() - oneMonthInMilliseconds
+    const oneMonthAgo = Date.now() - timeUnits.month * 1.5
 
     return pushedAt > oneMonthAgo
   }
@@ -62,44 +94,58 @@ export function Card({ project }: CardProps) {
   return (
     <div className="flex flex-col gap-4 py-8 first:border-t-1 lg:card-top-border border-b-1 border-neutral-400/10">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        {isNewProject() && (
-          <span className="flex items-center gap-2 text-sm italic text-purple-400">
-            <GoZap className="h-3.5 w-3.5" />
-            New project
+        {isNewProject() && project.created_at && (
+          <span className="flex items-center gap-2 w-max text-sm italic text-purple-400">
+            <GoZap size={14} />
+            Created {getRelativeTime(project.created_at)}
           </span>
         )}
 
-        {isRecentlyPushedProject() && (
+        {isRecentlyPushedProject() && project.pushed_at && (
           <span className="flex items-center gap-2 text-sm italic text-green-400">
-            <GoGitBranch className="h-3.5 w-3.5" />
-            Recently pushed
+            <GoGitBranch size={14} />
+            Pushed {getRelativeTime(project.pushed_at)}
           </span>
         )}
 
         {!!project.stargazers_count && (
           <span className="flex items-center gap-2 text-sm italic text-yellow-400">
-            <GoStar className="h-3.5 w-3.5" />
+            <GoStar size={14} />
             {project.stargazers_count}
+          </span>
+        )}
+
+        {!!project.forks_count && (
+          <span className="flex items-center gap-2 text-sm italic text-neutral-400">
+            <GoRepoForked size={14} />
+            {project.forks_count}
+          </span>
+        )}
+
+        {!!project.watchers_count && (
+          <span className="flex items-center gap-2 text-sm italic text-neutral-400">
+            <GoEye size={14} />
+            {project.watchers_count}
           </span>
         )}
 
         {!!project.language && (
           <span className="flex items-center gap-2 text-sm italic text-neutral-400">
-            <GoCode className="h-3.5 w-3.5" />
+            <GoCodeSquare size={14} />
             {project.language}
           </span>
         )}
 
         {project.fork && (
           <span className="flex items-center gap-2 text-sm italic text-neutral-400">
-            <GoRepoForked className="h-3.5 w-3.5" />
+            <GoRepoForked size={14} />
             Forked
           </span>
         )}
 
         {!!project.license && (
           <span className="flex items-center gap-2 text-sm italic text-neutral-400">
-            <GoLaw className="h-3.5 w-3.5" />
+            <GoLaw size={14} />
             {project.license.name}
           </span>
         )}
@@ -109,28 +155,26 @@ export function Card({ project }: CardProps) {
         <h2 className="w-full text-2xl truncate">{project.name}</h2>
 
         {cloneElement(github.icon, {
-          className: 'h-5 w-5 lg:h-6 lg:w-6'
+          size: 24
         })}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <Link
           href={project.html_url}
           target="_blank"
-          className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+          className="underline underline-offset-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
         >
           Repository
-          <GoLinkExternal className="h-3.5 w-3.5" />
         </Link>
 
         {project.homepage && (
           <Link
             href={project.homepage}
             target="_blank"
-            className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
+            className="underline underline-offset-2 text-sm text-blue-400 hover:text-blue-200 transition-colors"
           >
             Homepage
-            <GoLinkExternal className="h-3.5 w-3.5" />
           </Link>
         )}
       </div>

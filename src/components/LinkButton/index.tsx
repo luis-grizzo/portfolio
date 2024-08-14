@@ -24,7 +24,8 @@ export function LinkButton({
 
       {icon &&
         cloneElement(icon, {
-          className: `h-4 w-4 ${icon.props.className ?? ''}`
+          size: 16,
+          className: icon.props.className ?? ''
         })}
     </Link>
   )

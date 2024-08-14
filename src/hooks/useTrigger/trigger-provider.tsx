@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { TriggerContext } from './use-trigger'
 
-import { fiveSecondsInMilliseconds } from '@/constants/timeMarks'
+import { timeUnits } from '@/constants/timeUnits'
 
 type TriggerProviderProps = {
   children: React.ReactNode
@@ -19,7 +19,7 @@ export const TriggerProvider = ({
     if (isTemporaryOpen) {
       setTimeout(() => {
         setIsTemporaryOpen(false)
-      }, fiveSecondsInMilliseconds)
+      }, timeUnits.second * 5)
     }
   }, [isTemporaryOpen])
 
