@@ -3,7 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 
 import { TriggerProvider, useTrigger } from '@/hooks/useTrigger'
 
-import { fiveSecondsInMilliseconds } from '@/constants/timeMarks'
+import { timeUnits } from '@/constants/timeUnits'
 
 jest.useFakeTimers()
 
@@ -26,7 +26,7 @@ describe('useTrigger', () => {
     expect(result.current.isTemporaryOpen).toEqual(true)
 
     act(() => {
-      jest.advanceTimersByTime(fiveSecondsInMilliseconds)
+      jest.advanceTimersByTime(timeUnits.second * 5)
     })
 
     await waitFor(() => {

@@ -6,11 +6,11 @@ import { getProjects } from '@/services/github'
 import { Card, LinkButton, Hero, Footnote } from '@/components'
 
 import { socialMedias } from '@/constants/social-medias'
-import { oneHourInSeconds } from '@/constants/timeMarks'
+import { timeUnits } from '@/constants/timeUnits'
 
 import portrait from '@public/portrait.jpg'
 
-export const revalidate = oneHourInSeconds
+export const revalidate = timeUnits.hour / 1_000 // hour in seconds
 
 export default async function Page() {
   const image = await getImage()
