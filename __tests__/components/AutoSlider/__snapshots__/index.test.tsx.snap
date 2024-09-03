@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoSlider should match snapshot 1`] = `
+<div>
+  <div
+    class="relative w-full"
+  >
+    <div
+      class="absolute right-0 top-0 w-4 h-full bg-gradient-to-l from-neutral-950 z-50"
+      data-testid="right-fade"
+      style="opacity: 0; will-change: opacity;"
+    />
+    <div
+      class="overflow-hidden -z-50"
+      role="tabpanel"
+    >
+      <div
+        class="flex items-center gap-4 w-min"
+        role="tablist"
+      >
+        <span>
+          item 1
+        </span>
+        <span>
+          item 2
+        </span>
+        <span>
+          item 3
+        </span>
+        <span>
+          item 4
+        </span>
+        <span>
+          item 5
+        </span>
+        <span>
+          item 6
+        </span>
+        <span>
+          item 7
+        </span>
+        <span>
+          item 8
+        </span>
+        <span>
+          item 9
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
