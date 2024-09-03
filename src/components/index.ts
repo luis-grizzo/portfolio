@@ -1,3 +1,4 @@
+export * from './AutoSlider'
 export * from './Button'
 export * from './Card'
 export * from './Footer'
