@@ -25,4 +25,4 @@ jobs:
         run: npm run lint
 
       - name: Test
-        run: npm run test:default --clearCache && npm run test:coverage
+        run: npm run testest:clearCache && npm run test:coverage
